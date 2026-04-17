@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/javaLibrarySystem.iml" filepath="$PROJECT_DIR$/javaLibrarySystem.iml" />
+      <module fileurl="file://$PROJECT_DIR$/javaMediaSystem.iml" filepath="$PROJECT_DIR$/javaMediaSystem.iml" />
     </modules>
   </component>
 </project>
