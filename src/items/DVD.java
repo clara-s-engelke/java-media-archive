@@ -1,8 +1,8 @@
 package items;
 
 public class DVD extends Item {
-    private int duration;
-    private String director;
+    private final int duration;
+    private final String director;
 
     public DVD(String title, String director, int year, int duration, int id) {
         super(title, year, id);
@@ -13,7 +13,7 @@ public class DVD extends Item {
 
     @Override
     public String displayInfo() {
-        return title + " directed by " + director + ". Runtime: " + duration +"mins";
+        return "[DVD] " + title + " directed by " + director + ". Runtime: " + duration +"mins";
     }
 
     @Override

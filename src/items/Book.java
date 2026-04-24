@@ -14,7 +14,11 @@ public class Book extends Item {
 
     @Override
     public String displayInfo() {
-        return title + " by " + author + " - ISBN: " + isbn;
+        if(isbn != -1) {
+            return "[Book] " +title + " by " + author + " - ISBN: " + isbn;
+        } else{
+            return "[Book] " +title + " by " + author + " - ISBN: ";
+        }
     }
 
     @Override

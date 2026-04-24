@@ -14,11 +14,18 @@ public abstract class Item {
 
     @Override
     public String toString(){
-        return year + ": " + title;
+        return title + " from " + year;
     }
 
-    public boolean equals(Item li){
-        return (title.equals(li.title) && year == li.year);
+    @Override
+    public boolean equals(Object obj){
+        if(this == obj) return true;
+        if(!(obj instanceof Item other)) return false;
+        return (title.equals(other.title) && year == other.year);
+    }
+
+    public String getTitle(){
+        return title;
     }
 
 }
