@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
-public class Search {
+public class Util {
     public static List<Item> linSearch(List<Item> items, String targetTitle) {
         List<Item> hits = new ArrayList<>();
         for (Item item : items) {
@@ -17,7 +17,8 @@ public class Search {
         return hits;
     }
 
-    public static void sort(List<Item> items){
-        Comparator<Item> BY_TITLE = Comparator.comparing()
+    public static void sortByTitle(List<Item> items){
+        Comparator<Item> BY_TITLE = Comparator.comparing(Item::getTitle);
+        items.sort(BY_TITLE);
     }
 }

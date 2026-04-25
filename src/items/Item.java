@@ -3,10 +3,12 @@ package items;
 public abstract class Item {
     int year;
     String title;
+    int id;
 
     public Item(String title, int releaseYear, int id){
         this.title = title;
         this.year = releaseYear;
+        this.id = id;
     }
 
     public abstract String displayInfo();
