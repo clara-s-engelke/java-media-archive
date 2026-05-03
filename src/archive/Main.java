@@ -10,6 +10,7 @@ public class Main {
         while(true){
            Optional<Integer> i = ac.menu();
            if(i.isEmpty()){
+               ac.exit();
                break;
            } else{
                ac.handleChoice(i.get());

@@ -17,6 +17,11 @@ public class DVD extends Item {
     }
 
     @Override
+    public String getCharacteristics() {
+        return this.title + ";" + this.director + ";" + this.year + ";" + this.duration + ";" + this.id;
+    }
+
+    @Override
     public String toString(){
         return super.toString() + " directed by " + director;
     }

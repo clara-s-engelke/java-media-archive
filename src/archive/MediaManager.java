@@ -15,7 +15,8 @@ public class MediaManager {
 
 
     public MediaManager(){
-        a = new Archive();
+        a = new Archive("files\\\\books.csv", "files\\\\dvds.csv");
+        a.load();
         u = new UserInteraction();
     }
 
@@ -88,7 +89,7 @@ public class MediaManager {
     public void search(){
         System.out.println("What title are you looking for? ");
         String title = u.readString();
-        List<Item> hits = Util.linSearch(a.getItems(), title);
+        List<Item> hits = Util.binSearch(a.getItems(), title);
         if(hits.isEmpty()){
             System.out.println("Sorry, there's no media with this title");
         } else{
@@ -97,5 +98,9 @@ public class MediaManager {
                 System.out.println(item.displayInfo());
             }
         }
+    }
+
+    public void saveArchive(){
+        a.save();
     }
 }

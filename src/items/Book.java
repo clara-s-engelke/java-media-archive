@@ -17,9 +17,15 @@ public class Book extends Item {
         if(isbn != -1) {
             return "[Book] " +title + " by " + author + " - ISBN: " + isbn;
         } else{
-            return "[Book] " +title + " by " + author + " - ISBN: ";
+            return "[Book] " +title + " by " + author;
         }
     }
+
+    @Override
+    public String getCharacteristics() {
+        return this.title + ";" + this.author + ";" + this.year + ";" + this.id + ";" + this.isbn + ";" + this.pages;
+    }
+
 
     @Override
     public String toString(){

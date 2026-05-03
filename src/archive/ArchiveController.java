@@ -39,6 +39,10 @@ public class ArchiveController {
         }
     }
 
+    public void exit(){
+        m.saveArchive();
+    }
+
 
 
 

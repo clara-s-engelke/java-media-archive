@@ -1,9 +1,13 @@
 package items;
 
-public abstract class Item {
+import java.util.Comparator;
+import java.util.List;
+
+public abstract class Item implements Comparable<Item> {
     int year;
     String title;
     int id;
+    Comparator<Item> BY_TITLE = Comparator.comparing(Item::getTitle);
 
     public Item(String title, int releaseYear, int id){
         this.title = title;
@@ -13,6 +17,7 @@ public abstract class Item {
 
     public abstract String displayInfo();
 
+    public abstract String getCharacteristics();
 
     @Override
     public String toString(){
@@ -30,4 +35,8 @@ public abstract class Item {
         return title;
     }
 
+    @Override
+    public int compareTo(Item o) {
+        return this.title.compareTo(o.title);
+    }
 }
