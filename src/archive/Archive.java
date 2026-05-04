@@ -3,13 +3,17 @@ package archive;
 import items.Book;
 import items.DVD;
 import items.Item;
+import items.Status;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Archive {
     private List<Item> items;
+    private Set<String> allTags;
     private int id_Counter;
     private final File bookFile;
     private final File dvdFile;
@@ -19,6 +23,7 @@ public class Archive {
         id_Counter = 0;
         bookFile = new File(bookPath);
         dvdFile = new File(dvdPath);
+        allTags = new HashSet<>();
     }
 
     public void addItem(Item item){
@@ -30,8 +35,8 @@ public class Archive {
             items.remove(item);
     }
 
-    public int getNextID(){
-        return id_Counter+1;
+    public void newTag(String tag){
+        allTags.add(tag);
     }
 
     public void save(){
@@ -50,11 +55,11 @@ public class Archive {
                 }
             }
         } catch (IOException ioe){
-            System.out.println("Error while saving... It may be your changes have not been saved");;
+            System.out.println("Error while saving the data...");
         }
     }
 
-    public void load(){
+    public void load() {
         try(BufferedReader bookR = new BufferedReader(new FileReader(bookFile))){
             String s = bookR.readLine();
             while(s != null) {
@@ -62,10 +67,25 @@ public class Archive {
                 Book book = new Book(parts[0], parts[1], Integer.parseInt(parts[2]),
                         Integer.parseInt(parts[3]), Long.parseLong(parts[4]), Integer.parseInt(parts[5]));
                 items.add(book);
+                if(parts.length < 8){
+                    s = bookR.readLine();
+                    continue;
+                }
+                String[] tags = parts[7].split(" \\| ");
+                for(String tag : tags){
+                    book.addTag(tag);
+                }
+                if(parts[6].equals(Status.CURRENT.getDisplayName())){
+                    book.updateStatus(Status.CURRENT);
+                } else if (parts[6].equals(Status.FINISHED.getDisplayName())){
+                    book.updateStatus(Status.FINISHED);
+                } else{
+                    book.updateStatus(Status.WANT);
+                }
                 s = bookR.readLine();
             }
         }catch(IOException ioe){
-            System.out.println("Error while Loading books, this media may not be displayed correctly");
+            System.out.println("Error while loading media of type \"book\"");
         }
         try(BufferedReader dvdR = new BufferedReader(new FileReader(dvdFile))){
             String s = dvdR.readLine();
@@ -74,15 +94,33 @@ public class Archive {
                 DVD dvd = new DVD(parts[0], parts[1], Integer.parseInt(parts[2]),
                         Integer.parseInt(parts[3]), Integer.parseInt(parts[4]));
                 items.add(dvd);
+                String[] tags = parts[6].split(" \\| ");
+                for(String tag : tags){
+                    dvd.addTag(tag);
+                }
+                if(parts[5].equals(Status.CURRENT.getDisplayName())){
+                    dvd.updateStatus(Status.CURRENT);
+                } else if (parts[5].equals(Status.FINISHED.getDisplayName())){
+                    dvd.updateStatus(Status.FINISHED);
+                } else{
+                    dvd.updateStatus(Status.WANT);
+                }
                 s = dvdR.readLine();
             }
         }catch(IOException ioe){
-            System.out.println("Error while Loading dvds, this media may not be displayed correctly");
+            System.out.println("Error while loading media of type \"dvd\"");
         }
     }
 
     public List<Item> getItems(){
         return items;
+    }
+
+    public Set<String> getAllTags(){
+        return allTags;
+    }
+    public int getNextID(){
+        return id_Counter+1;
     }
 }
 

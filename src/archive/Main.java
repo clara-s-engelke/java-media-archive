@@ -8,7 +8,7 @@ public class Main {
         ArchiveController ac = new ArchiveController(u);
 
         while(true){
-           Optional<Integer> i = ac.menu();
+           Optional<Integer> i = ac.mainMenu();
            if(i.isEmpty()){
                ac.exit();
                break;

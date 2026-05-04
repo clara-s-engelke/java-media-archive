@@ -1,18 +1,21 @@
 package items;
 
-import java.util.Comparator;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 public abstract class Item implements Comparable<Item> {
-    int year;
-    String title;
-    int id;
-    Comparator<Item> BY_TITLE = Comparator.comparing(Item::getTitle);
+    protected int year;
+    protected String title;
+    protected int id;
+    protected Set<String> tags;
+    protected Status status;
 
     public Item(String title, int releaseYear, int id){
         this.title = title;
         this.year = releaseYear;
         this.id = id;
+        tags = new HashSet<>();
+        status = Status.WANT;
     }
 
     public abstract String displayInfo();
@@ -31,12 +34,33 @@ public abstract class Item implements Comparable<Item> {
         return (title.equals(other.title) && year == other.year);
     }
 
-    public String getTitle(){
-        return title;
-    }
-
     @Override
     public int compareTo(Item o) {
         return this.title.compareTo(o.title);
     }
+
+    public void addTag(String newTag){
+        tags.add(newTag);
+    }
+
+    public String tagString(){
+        StringBuilder sb = new StringBuilder();
+        for(String tag : tags){
+            if(sb.isEmpty()){
+                sb.append(tag);
+            }
+            sb.append(" | ").append(tag);
+        }
+        return sb.toString();
+    }
+
+    public void updateStatus(Status status){
+        this.status = status;
+    }
+
+    public String getTitle(){
+        return title;
+    }
+
+
 }

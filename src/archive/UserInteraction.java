@@ -16,9 +16,9 @@ public class UserInteraction {
         }
 
         for(int i = 0; i< choices.size(); i++){
-            System.out.println((i+1) + " - " + choices.get(i));
+            System.out.println("[" + (i+1) + "] " + choices.get(i));
         }
-        System.out.println((choices.size()+1) + " - " + "EXIT");
+        System.out.println("[" + (choices.size()+1) + "] " + "EXIT");
 
         while(true){
             System.out.print("Please choose one of the options: ");

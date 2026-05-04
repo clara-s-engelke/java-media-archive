@@ -15,15 +15,18 @@ public class Book extends Item {
     @Override
     public String displayInfo() {
         if(isbn != -1) {
-            return "[Book] " +title + " by " + author + " - ISBN: " + isbn;
+            return "[Book] " +title + " by " + author + " - ISBN: " + isbn +
+                    "\n Status: " + status + "\t" + tags.toString();
         } else{
-            return "[Book] " +title + " by " + author;
+            return "[Book] " +title + " by " + author + "\n Status: " + status + "\t" +
+                    tags.toString();
         }
     }
 
     @Override
     public String getCharacteristics() {
-        return this.title + ";" + this.author + ";" + this.year + ";" + this.id + ";" + this.isbn + ";" + this.pages;
+        return this.title + ";" + this.author + ";" + this.year + ";" + this.id + ";" + this.isbn + ";" +
+                this.pages + ";" + this.status.getDisplayName() + ";" +  tagString();
     }
 
 

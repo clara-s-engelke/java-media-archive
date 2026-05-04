@@ -1,9 +1,6 @@
 package archive;
 
-import items.Book;
-import items.DVD;
-import items.Item;
-import items.ItemTypes;
+import items.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -97,6 +94,43 @@ public class MediaManager {
             for(Item item : hits){
                 System.out.println(item.displayInfo());
             }
+        }
+    }
+
+    public void editMedia(){
+        System.out.println("First, what item do you want to edit:");
+        Optional<Item> choice = u.choose(a.getItems());
+        if(choice.isPresent()){
+            Item item = choice.get();
+            System.out.println("Second, what do you want to edit?");
+            List<String> options = new ArrayList<>();
+            options.add("status");
+            options.add("tags");
+            Optional<String> c = u.choose(options);
+            if(c.isPresent()){
+                String s = c.get();
+                if(s.equals("status")){
+                    changeStatus(item);
+                }else if(s.equals("tags")){
+                    addTags(item);
+                }
+            }
+        }
+    }
+
+    private void changeStatus(Item i){
+        System.out.println("What's the new status?");
+        Optional<Status> choice = u.choose(List.of(Status.values()));
+        choice.ifPresent(i::updateStatus);
+    }
+
+    private void addTags(Item item) {
+        System.out.println("Please type all the tags you want to add, devided by comma");
+        String[] tags = u.readString().split(",");
+        for(String tag : tags){
+            tag = tag.strip();
+            item.addTag(tag);
+            a.newTag(tag);
         }
     }
 

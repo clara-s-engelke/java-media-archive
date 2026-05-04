@@ -13,10 +13,11 @@ public class ArchiveController {
         m = new MediaManager();
     }
 
-    public Optional<Integer> menu(){
+    public Optional<Integer> mainMenu(){
        List<String> options = new ArrayList<>();
        options.add("add");
        options.add("remove");
+       options.add("edit");
        options.add("show");
        options.add("search");
 
@@ -34,16 +35,13 @@ public class ArchiveController {
         switch(i){
             case 1 -> m.addMedia();
             case 2 -> m.removeMedia();
-            case 3 -> m.showArchive();
-            case 4 -> m.search();
+            case 3 -> m.editMedia();
+            case 4 -> m.showArchive();
+            case 5 -> m.search();
         }
     }
 
     public void exit(){
         m.saveArchive();
     }
-
-
-
-
 }

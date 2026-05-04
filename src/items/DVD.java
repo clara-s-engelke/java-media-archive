@@ -13,12 +13,14 @@ public class DVD extends Item {
 
     @Override
     public String displayInfo() {
-        return "[DVD] " + title + " directed by " + director + ". Runtime: " + duration +"mins";
+        return "[DVD] " + title + " directed by " + director + ". Runtime: " + duration +"mins" +
+                "\n Status: " + status + "\t" + tags.toString();
     }
 
     @Override
     public String getCharacteristics() {
-        return this.title + ";" + this.director + ";" + this.year + ";" + this.duration + ";" + this.id;
+        return this.title + ";" + this.director + ";" + this.year + ";" + this.duration + ";" + this.id +
+                ";" + this.status.getDisplayName() + ";" +  tagString();
     }
 
     @Override
