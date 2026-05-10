@@ -1,7 +1,7 @@
 # 📚 JAVA MEDIA ARCHIVE
 A small terminal-based media archive written in Java.
 
-This project lets you **add**, **show**, and **remove** media entries in an archive.  
+This project lets you **add**, **show**, **remove**, **edit** and **search for** media entries in an archive.  
 Currently supported media types:
 - **Books**
 - **DVDs**
@@ -19,17 +19,28 @@ Core features are implemented, but the project is still evolving and will change
 
 ## 💡 FEATURES
 What you can do right now:
+- **Persistent entries**
+  - entries are saved in a .csv-file and loaded upon starting the program
+    
 - **Add media**
   - Choose between **Book** and **DVD**
   - Enter title + release year
   - Book-specific fields: author, ISBN (optional), pages
   - DVD-specific fields: director, duration (minutes)
+    
 - **Show archive**
   - Prints a sorted list of all items with their info
+    
 - **Remove media**
   - Pick an item from the current archive and remove it
+    
 - **Search media**
   - using a simple search algorithm, it is possible to search pieces of media by their title
+ 
+- **Tags and Status**
+  - via the editing Option, tags can be added and the status can be changed
+  - both displayed on the show tab
+  - preparation for search by tag 
 
 ---
 
