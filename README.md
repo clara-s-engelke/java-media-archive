@@ -11,14 +11,15 @@ This repo was created as a learning project to practice Java fundamentals (OOP, 
 ---
 
 ## ▶️ STATUS
-🚧 In progress / learning project
+⏸️ Paused
 
-Core features are implemented, but the project is still evolving and will change in the following weeks
+All basic features are implemented and the program is working the way it should.
+Some features (see **features**, roadmap) may be added in the future.
 
 ---
 
 ## 💡 FEATURES
-What you can do right now:
+Implemented Features:
 - **Persistent entries**
   - entries are saved in a .csv-file and loaded upon starting the program
     
@@ -42,6 +43,15 @@ What you can do right now:
   - both displayed on the show tab
   - preparation for search by tag 
 
+
+Roadmap:
+- **Search by tag**
+  - prepared, but not yet implemented
+- **Search by other characteristics**
+  - e.g. status, author, category (book, dvd,...)
+- **More types of media**
+  - shows/movies instead of dvd
+  - possibly option to create own types in the program itself
 ---
 
 ## ▶️ How to run
