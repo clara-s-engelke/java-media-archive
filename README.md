@@ -94,7 +94,7 @@ Get-ChildItem -Recurse -Filter *.java -Path src | ForEach-Object { $_.FullName }
 ---
 
 ## 📌 NOTES
-This is the second of six small projects I do ahead of starting my CS degree. As such, it is a learning project and mirrors my skills and
+This is the second of three small projects I do ahead of starting my CS degree. As such, it is a learning project and mirrors my skills and
 and knowledge at that time.
 I am always happy about feedback and constructive criticism
 ````*
